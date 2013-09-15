@@ -1,4 +1,4 @@
-:ruby
+-#:ruby
   if field.ckeditor
     richtext = 'ckeditor'
     js_data = {
@@ -31,8 +31,8 @@
 = form.fields_for (field.name.to_s + '_translations') do |localized_field|
   - I18n.available_locales.each do |locale|
     = localized_field.label locale
-    = localized_field.text_area locale.to_s, field.html_attributes.reverse_merge(:data => { :options => js_data.to_json }).reverse_merge(value: field.value.try(:[], locale.to_s))
-    -#= localized_field.text_area locale.to_s, field.html_attributes.reverse_merge(:data => { :richtext => richtext, :options => js_data.to_json }).reverse_merge(value: field.value.try(:[], locale.to_s))
+    = localized_field.text_area locale.to_s, field.html_attributes.reverse_merge(value: field.value.try(:[], locale.to_s))
+    -#= localized_field.text_area locale.to_s, field.html_attributes.reverse_merge(:data => { :options => js_data.to_json }).reverse_merge(value: field.value.try(:[], locale.to_s))
 
 -#= form.localized_fields do |localized_fields|
 -#  = localized_fields.label localized_fields.language
